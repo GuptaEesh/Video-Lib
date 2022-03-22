@@ -18,7 +18,7 @@ export function InputPass({ title: name, inputClass, inputPlaceHolder }) {
           onClick={() => setVisiblility(!visiblility)}
           style={{
             position: "absolute",
-            marginLeft: "13rem",
+            right: "2%",
             cursor: "pointer",
           }}
           color="var(--primary-400)"

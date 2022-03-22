@@ -1,5 +1,5 @@
-export { InputTextBox } from "./organisms/inputbox/input-email";
-export { InputPass } from "./organisms/inputbox/input-password";
+export { InputTextBox } from "./molecules/inputbox/input-email";
+export { InputPass } from "./molecules/inputbox/input-password";
 export { Input } from "./atoms/input";
-export { CategoryCard } from "./organisms/category/category";
+export { CategoryCard } from "./molecules/category/category";
 export { Button } from "./atoms/button";
