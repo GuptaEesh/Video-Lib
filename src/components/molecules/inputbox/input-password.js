@@ -1,4 +1,4 @@
-import { Input } from "../../";
+import { Input } from "../..";
 import { useState } from "react";
 import { BsEyeFill } from "react-icons/bs";
 import "./inputbox.css";

@@ -1,4 +1,4 @@
-import { Input } from "../../";
+import { Input } from "../..";
 
 export function InputTextBox({
   title: name,
