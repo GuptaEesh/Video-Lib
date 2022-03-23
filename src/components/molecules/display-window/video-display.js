@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./video-display.css";
-export function VideoCard({ img, views, desc, title, likes, id }) {
+export function VideoCard({ img, desc, title, id }) {
   const video_status = {
     backgroundColor: "var(--red-400)",
     padding: "0.5rem",
@@ -18,9 +18,8 @@ export function VideoCard({ img, views, desc, title, likes, id }) {
       </section>
       <p className="text-justify sm">{desc}</p>
       <section className="flex flex-wrap" style={video_status}>
-        <p className="bold">{views} Views</p>
-        <p className="bold">{likes ?? 0} Likes</p>
-        <p className="bold">{views} Views</p>
+        <p className="bold">{(Math.random() * 10).toPrecision(2)}k Likes</p>
+        <p className="bold">{(Math.random() * 10).toPrecision(2)}M Views</p>
       </section>
     </div>
   );
