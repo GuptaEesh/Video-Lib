@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, InputPass, InputTextBox } from "../../components";
 import "../home/home.css";
 export function Login() {
+  const navigate = useNavigate();
   return (
     <div
       className="home-page flex align-center flex-column justify-center"
@@ -35,6 +36,7 @@ export function Login() {
         <Button
           btnText="Log-In"
           btnType="primary-video btn text-white bold size-16"
+          btnFunc={() => navigate("/videos")}
         />
       </div>
     </div>

@@ -8,7 +8,7 @@ export const videos = [
   {
     _id: uuid(),
     video_id: "ar31DrNV_pM",
-    title: "Designing a Car – from Sketch to Presentation",
+    title: "Designing a Car",
     display_img:
       "https://drive.google.com/uc?export=view&id=1spLQQeuxH-Rfugz3cSCv2qJGC5sfjwHD",
     categoryName: "Design",
@@ -30,7 +30,7 @@ export const videos = [
   {
     _id: uuid(),
     video_id: "Xi4RrjvZA7w",
-    title: "Designing the future: Lamborghini Terzo Millennio",
+    title: "Designing the future",
     display_img:
       "https://drive.google.com/uc?export=view&id=1spLQQeuxH-Rfugz3cSCv2qJGC5sfjwHD",
     categoryName: "Design",
@@ -52,7 +52,7 @@ export const videos = [
   {
     _id: uuid(),
     video_id: "WUL8xQ0K-qs",
-    title: "Lamborghini Engines: 350 GT and 8 Liter Marine",
+    title: "350 GT and 8 Liter Marine Engines",
     display_img:
       "https://drive.google.com/uc?export=view&id=1QLNJx12jzH2Lt8h9qIGzTf2l5w79rPjH",
     categoryName: "Engine",
@@ -63,7 +63,7 @@ export const videos = [
   {
     _id: uuid(),
     video_id: "vEvBbNe3rqU",
-    title: "LAMBORGHINI AVENTADOR LP 700-4. A RELENTLESS FORCE",
+    title: "Lamborghini Aventador LP",
     display_img:
       "https://drive.google.com/uc?export=view&id=1QLNJx12jzH2Lt8h9qIGzTf2l5w79rPjH",
     categoryName: "Engine",
@@ -84,7 +84,7 @@ export const videos = [
   {
     _id: uuid(),
     video_id: "SSA3Nu6NeTk",
-    title: "Tata Punch achieves 5 star rating for adult protection",
+    title: "Tata Punch : NCAP",
     display_img:
       "https://drive.google.com/uc?export=view&id=1jNInJ_l79Qs46DR-07VN8F3ZbxttI1J3",
     categoryName: "Safety",

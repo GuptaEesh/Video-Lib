@@ -1,6 +1,6 @@
 import "./App.css";
 import { DataProvider } from "./helpers/data-context";
-import { Home, Login, SignUp } from "./pages";
+import { Home, ListingPage, Login, SignUp } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -12,6 +12,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/videos" element={<ListingPage />} />
+            <Route path="/videos/:id" element={<Login />} />
           </Routes>
         </DataProvider>
       </Router>
