@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Loader, Nav, VideoCard } from "../../components";
+import { Loader, SmallNav, VideoCard } from "../../components";
 import { useData } from "../../helpers/data-context";
 
 export function ListingPage() {
@@ -7,11 +7,8 @@ export function ListingPage() {
   const [selectedVideos, setSelectedVideos] = useState(videos);
   let showVideos = selectedVideos.length === 0 ? videos : selectedVideos;
   return (
-    <div>
-      <Nav
-        selectedVideos={selectedVideos}
-        setSelectedVideos={setSelectedVideos}
-      />
+    <div className="flex flex-column">
+      <SmallNav setSelectedVideos={setSelectedVideos} />
       {loader ? (
         <div
           className="flex align-center flex-column justify-center"

@@ -1,0 +1,19 @@
+.modalBackground {
+    width: 100vw;
+    height:70vh;
+    position: fixed;
+    backdrop-filter: blur(10px);
+}
+.modalContainer {
+    width: 40%;
+    min-height: 40vh;
+    border-radius: 12px;
+    background-color: var(--primary-400);
+    padding: 25px;
+}
+.modalContainer .title{
+    margin-bottom: 2rem;
+}
+.modalContainer .input-text{
+    width: 50%;
+}

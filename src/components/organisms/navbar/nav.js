@@ -2,18 +2,10 @@ import { Button, Input } from "../../";
 import React from "react";
 import "./nav.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useData } from "../../../helpers/data-context";
 
-export function Nav({ setSelectedVideos }) {
-  const { categories, videos } = useData();
+export function Nav() {
   const navigate = useNavigate();
-  const categoryHandler = (name) => {
-    const newVids =
-      name === "All"
-        ? videos
-        : [...videos].filter((video) => video.categoryName === name);
-    setSelectedVideos(newVids);
-  };
+
   return (
     <div className="flex flex-column align-center">
       <header className="nav-bar with-shadow">
@@ -26,7 +18,7 @@ export function Nav({ setSelectedVideos }) {
           <Button
             btnText="My L❗st"
             btnType="tertiary btn bold"
-            btnFunc={() => navigate("/videos")}
+            btnFunc={() => navigate("/playlist")}
           />
         </section>
         <Input
@@ -43,14 +35,14 @@ export function Nav({ setSelectedVideos }) {
         </section>
         <div className="nav-section-right align-center">
           <div className="icon-with-badge">
-            <Link to="">
+            <Link to="/likeList">
               <span className="material-icons outlined lg text-white">
                 favorite
               </span>
             </Link>
           </div>
           <div className="icon-with-badge">
-            <Link to="">
+            <Link to="/history">
               <span className="material-icons outlined lg text-white">
                 history
               </span>
@@ -58,22 +50,6 @@ export function Nav({ setSelectedVideos }) {
           </div>
         </div>
       </header>
-      <div className="nav-section-left flex-wrap">
-        {[...categories, { id: 4, categoryName: "All" }].map(
-          ({ categoryName: name, id }) => (
-            <Button
-              key={id}
-              btnText={name}
-              btnType="bold btn"
-              btnFunc={() => categoryHandler(name)}
-              btnStyle={{
-                backgroundColor: "var(--red-400)",
-                color: "var(--white)",
-              }}
-            />
-          )
-        )}
-      </div>
     </div>
   );
 }

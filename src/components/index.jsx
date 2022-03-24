@@ -1,3 +1,5 @@
+export { Modal } from "./organisms/modal/modal";
+export { SmallNav } from "./organisms/navbar/smallnav";
 export { MyYouTube } from "./organisms/you-tube/youtube";
 export { Nav } from "./organisms/navbar/nav";
 export { Loader } from "./atoms/loader/loader";
