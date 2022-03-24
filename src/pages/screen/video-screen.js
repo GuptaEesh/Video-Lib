@@ -7,6 +7,12 @@ export function VideoScreen() {
   return videos
     .filter((video) => video.id === id)
     .map(({ id, video_id, title, description: desc }) => (
-      <MyYouTube key={id} videoId={video_id} desc={desc} title={title} />
+      <MyYouTube
+        key={id}
+        id={id}
+        videoId={video_id}
+        desc={desc}
+        title={title}
+      />
     ));
 }

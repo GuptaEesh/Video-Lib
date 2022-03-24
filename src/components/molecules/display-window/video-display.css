@@ -1,7 +1,7 @@
 .video-card{
     box-shadow: 0 0 8px var(--red-400);
     width:25rem;
-    min-height: 21rem;
+    max-height: 22rem;
     padding: var(--size-12);
 }
 .video-card:hover{

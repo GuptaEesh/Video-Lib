@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useList } from "../../../helpers/list-context";
+import { useData } from "../../../helpers/data-context";
 import "./video-display.css";
 export function VideoCard({ img, desc, title, id }) {
   const video_status = {
@@ -6,11 +8,16 @@ export function VideoCard({ img, desc, title, id }) {
     padding: "0.5rem",
     gap: "1rem",
   };
+  const { videos } = useData();
   const navigate = useNavigate();
+  const { dispatchList } = useList();
   return (
     <div
       className="flex flex-column video-card text-white justify-space-between"
-      onClick={() => navigate(`/videos/${id}`)}
+      onClick={() => {
+        dispatchList({ type: "ADD_TO_HISTORY", payload: { id, videos } });
+        navigate(`/videos/${id}`);
+      }}
     >
       <section className="flex" style={{ gap: "10px" }}>
         <img src={img} alt={title} loading="lazy" style={{ width: "60%" }} />
