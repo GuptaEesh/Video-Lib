@@ -1,21 +1,11 @@
 import { VideoCard } from "../../components";
 import { useList } from "../../helpers/list-context";
-
+import "../history/history-list.css";
 export function LikeList() {
   const { lists } = useList();
 
   return (
-    <div
-      className="flex flex-wrap justify-space-around"
-      style={{
-        gap: "1rem",
-        marginTop: "1rem",
-        margin: "1rem",
-        padding: "1rem",
-        backgroundColor: "rgba(254, 121, 104, 0.5)",
-        borderRadius: "0.5rem",
-      }}
-    >
+    <div className="flex flex-wrap justify-space-around selected-list">
       {lists.likeList.map(
         ({ display_img: img, description: desc, title, id, likes, views }) => (
           <VideoCard

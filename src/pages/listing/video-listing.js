@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Loader, SmallNav, VideoCard } from "../../components";
 import { useData } from "../../helpers/data-context";
-
+import "../history/history-list.css";
 export function ListingPage() {
   const { loader, videos } = useData();
   const [selectedVideos, setSelectedVideos] = useState(videos);
@@ -18,16 +18,7 @@ export function ListingPage() {
           <h2 className="text-white">Loading your videos! Hang in with us</h2>
         </div>
       ) : (
-        <div
-          className="flex flex-wrap justify-space-between"
-          style={{
-            margin: "1rem",
-            gap: "1rem",
-            padding: "1rem",
-            backgroundColor: "rgba(254, 121, 104, 0.5)",
-            borderRadius: "0.5rem",
-          }}
-        >
+        <div className="flex flex-wrap justify-space-between selected-list">
           {[...showVideos].map(
             ({
               id,

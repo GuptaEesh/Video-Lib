@@ -1,22 +1,12 @@
 import { VideoCard } from "../../components";
 import { useData } from "../../helpers/data-context";
 import { useList } from "../../helpers/list-context";
-
+import "../history/history-list.css";
 export function PlayList() {
   const { videos } = useData();
   const { lists } = useList();
   return lists.playlist.map(({ id, info }) => (
-    <div
-      key={id}
-      className="flex flex-column align-center"
-      style={{
-        margin: "1rem",
-        gap: "1rem",
-        backgroundColor: "rgba(254, 121, 104, 0.2)",
-        borderRadius: "0.5rem",
-        padding: "1rem",
-      }}
-    >
+    <div key={id} className="flex flex-column align-center selected-list">
       <h1 className="text-white">
         PlayList Name :{" "}
         <span

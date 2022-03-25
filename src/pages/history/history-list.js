@@ -1,5 +1,6 @@
 import { useList } from "../../helpers/list-context";
 import { VideoCard } from "../../components";
+import "./history-list.css";
 export function HistoryList() {
   const { lists } = useList();
 
@@ -19,18 +20,7 @@ export function HistoryList() {
           likes,
           views,
         }) => (
-          <div
-            key={time}
-            className="flex justify-space-around"
-            style={{
-              gap: "1rem",
-              padding: "1rem",
-              marginTop: "1rem",
-              margin: "1rem",
-              backgroundColor: "rgba(254, 121, 104, 0.5)",
-              borderRadius: "0.5rem",
-            }}
-          >
+          <div key={time} className="flex justify-space-around selected-list">
             <VideoCard
               likes={likes}
               views={views}
