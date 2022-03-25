@@ -22,12 +22,7 @@ export function PlayList() {
       </h1>
       <div
         className="flex text-white flex-wrap justify-space-between"
-        style={{
-          gap: "1rem",
-          backgroundColor: "rgba(255,255,255,0.5)",
-          borderRadius: "0.5rem",
-          padding: "1rem",
-        }}
+        style={{ gap: "1rem" }}
       >
         {[...videos]
           .reduce(
