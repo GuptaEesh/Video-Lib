@@ -20,17 +20,33 @@ export function ListingPage() {
       ) : (
         <div
           className="flex flex-wrap justify-space-between"
-          style={{ margin: "1rem", gap: "1rem" }}
+          style={{
+            margin: "1rem",
+            gap: "1rem",
+            padding: "1rem",
+            backgroundColor: "rgba(254, 121, 104, 0.5)",
+            borderRadius: "0.5rem",
+          }}
         >
           {[...showVideos].map(
-            ({ id, display_img: img, views, description: desc, title }) => (
+            ({
+              id,
+              display_img: img,
+              views,
+              description: desc,
+              title,
+              likes,
+            }) => (
               <VideoCard
                 key={id}
+                likes={likes}
+                views={views}
+                cardStyle="eg-card ecomm-card text-white"
                 id={id}
                 img={img}
-                views={views}
                 desc={desc}
                 title={title}
+                cardHeader="listedVideo"
               />
             )
           )}

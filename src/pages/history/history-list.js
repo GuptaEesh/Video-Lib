@@ -9,16 +9,41 @@ export function HistoryList() {
       style={{ marginTop: "2rem", gap: "1rem" }}
     >
       {lists.history.map(
-        ({ id, display_img: img, description: desc, title, date, time }) => (
+        ({
+          id,
+          display_img: img,
+          description: desc,
+          title,
+          date,
+          time,
+          likes,
+          views,
+        }) => (
           <div
             key={time}
             className="flex justify-space-around"
-            style={{ gap: "1rem" }}
+            style={{
+              gap: "1rem",
+              padding: "1rem",
+              marginTop: "1rem",
+              margin: "1rem",
+              backgroundColor: "rgba(254, 121, 104, 0.5)",
+              borderRadius: "0.5rem",
+            }}
           >
-            <VideoCard img={img} desc={desc} title={title} id={id} />
+            <VideoCard
+              likes={likes}
+              views={views}
+              img={img}
+              desc={desc}
+              title={title}
+              id={id}
+              cardStyle="flex history-card text-white"
+              cardHeader="historyVideo"
+            />
             <section className="flex flex-wrap" style={{ gap: "1rem" }}>
-              <h2 className="text-white">{date}</h2>
-              <h2 className="text-white">{time}</h2>
+              <h2 className="text-white bold">{date}</h2>
+              <h2 className="text-white bold">{time}</h2>
             </section>
           </div>
         )

@@ -9,13 +9,36 @@ export function PlayList() {
     <div
       key={id}
       className="flex flex-column align-center"
-      style={{ margin: "1rem", gap: "1rem" }}
+      style={{
+        margin: "1rem",
+        gap: "1rem",
+        backgroundColor: "rgba(254, 121, 104, 0.2)",
+        borderRadius: "0.5rem",
+        padding: "1rem",
+      }}
     >
       <h1 className="text-white">
         PlayList Name :{" "}
-        <span className="text-blue bold size-20">{info.name}</span>
+        <span
+          className="text-blue bold size-16"
+          style={{
+            backgroundColor: "var(--white)",
+            padding: "5px",
+            borderRadius: "0.5rem",
+          }}
+        >
+          {info.name}
+        </span>
       </h1>
-      <div className="flex text-white flex-wrap justify-space-between">
+      <div
+        className="flex text-white flex-wrap justify-space-between"
+        style={{
+          gap: "1rem",
+          backgroundColor: "rgba(255,255,255,0.5)",
+          borderRadius: "0.5rem",
+          padding: "1rem",
+        }}
+      >
         {[...videos]
           .reduce(
             (acc, curr) =>
@@ -30,19 +53,28 @@ export function PlayList() {
               display_img: img,
               description: desc,
               title,
-              date,
-              time,
+              likes,
+              views,
             }) => (
               <div
-                key={time}
-                className="flex justify-space-around"
+                key={id}
+                className="flex justify-space-around "
                 style={{ gap: "1rem" }}
               >
-                <VideoCard img={img} desc={desc} title={title} id={id} />
-                <section className="flex flex-wrap" style={{ gap: "1rem" }}>
-                  <h2 className="text-white">{date}</h2>
-                  <h2 className="text-white">{time}</h2>
-                </section>
+                <VideoCard
+                  img={img}
+                  likes={likes}
+                  views={views}
+                  desc={desc}
+                  title={title}
+                  id={id}
+                  cardStyle="playlist-card"
+                  cardHeader="playListedVideo"
+                />
+                <section
+                  className="flex flex-wrap"
+                  style={{ gap: "1rem" }}
+                ></section>
               </div>
             )
           )}

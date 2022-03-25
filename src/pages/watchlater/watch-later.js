@@ -1,7 +1,7 @@
 import { VideoCard } from "../../components";
 import { useList } from "../../helpers/list-context";
 
-export function LikeList() {
+export function WatchLater() {
   const { lists } = useList();
 
   return (
@@ -16,12 +16,12 @@ export function LikeList() {
         borderRadius: "0.5rem",
       }}
     >
-      {lists.likeList.map(
+      {lists.watchLater.map(
         ({ display_img: img, description: desc, title, id, likes, views }) => (
           <VideoCard
+            key={id}
             likes={likes}
             views={views}
-            key={id}
             img={img}
             desc={desc}
             title={title}

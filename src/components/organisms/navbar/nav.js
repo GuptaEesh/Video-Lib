@@ -35,6 +35,13 @@ export function Nav() {
         </section>
         <div className="nav-section-right align-center">
           <div className="icon-with-badge">
+            <Link to="/watchlater">
+              <span className="material-icons outlined lg text-white">
+                bookmark
+              </span>
+            </Link>
+          </div>
+          <div className="icon-with-badge">
             <Link to="/likeList">
               <span className="material-icons outlined lg text-white">
                 favorite

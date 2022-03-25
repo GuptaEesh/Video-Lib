@@ -4,8 +4,10 @@ const ListContext = createContext();
 const initial = {
   likeList: [],
   history: [],
+  watchLater: [],
   playlist: [],
 };
+
 const listReducer = (lists, action) => {
   switch (action.type) {
     case "LIKE_VIDEO":
@@ -76,13 +78,30 @@ const listReducer = (lists, action) => {
             : playlist
         ),
       };
+    case "ADD_TO_WATCHLATER":
+      return {
+        ...lists,
+        watchLater: [
+          ...lists.watchLater,
+          ...action.payload.videos.filter(
+            (video) => video.id === action.payload.id
+          ),
+        ],
+      };
+    case "REMOVE_FROM_WATCHLATER":
+      return {
+        ...lists,
+        watchLater: lists.watchLater.filter(
+          (video) => video.id !== action.payload
+        ),
+      };
     default:
       return lists;
   }
 };
 const ListProvider = ({ children }) => {
   const [lists, dispatchList] = useReducer(listReducer, initial);
-
+  console.log(lists.watchLater);
   return (
     <ListContext.Provider value={{ lists, dispatchList }}>
       {children}
