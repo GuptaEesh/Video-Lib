@@ -2,26 +2,36 @@ import { VideoCard } from "../../components";
 import { useData } from "../../helpers/data-context";
 import { useList } from "../../helpers/list-context";
 import { GiCrossMark } from "react-icons/gi";
+import { AiFillDelete } from "react-icons/ai";
+
 import "../history/history-list.css";
 export function PlayList() {
   const { videos } = useData();
   const { lists, dispatchList } = useList();
   return lists.playlist.map(({ id, info }) => (
     <div key={id} className="flex flex-column align-center selected-list">
-      <h1 className="text-white">
-        PlayList Name :{" "}
-        <span
-          className="text-blue bold size-16"
-          style={{
-            backgroundColor: "var(--white)",
-            padding: "5px",
-            borderRadius: "0.5rem",
-          }}
-        >
-          {info.name}
-        </span>
-      </h1>
-
+      <section
+        style={{ gap: "1rem" }}
+        className=" flex align-center justify-space-between"
+      >
+        <h1 className="text-white">
+          PlayList Name :{" "}
+          <span
+            className="text-blue bold size-16"
+            style={{
+              backgroundColor: "var(--white)",
+              padding: "5px",
+              borderRadius: "0.5rem",
+            }}
+          >
+            {info.name}
+          </span>
+        </h1>
+        <AiFillDelete
+          color="var(--white)"
+          onClick={() => dispatchList({ type: "REMOVE_PLAYLIST", payload: id })}
+        />
+      </section>
       <div
         className="flex text-white flex-wrap justify-space-between"
         style={{ gap: "1rem" }}
