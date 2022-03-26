@@ -1,21 +1,41 @@
 import { VideoCard } from "../../components";
 import { useData } from "../../helpers/data-context";
 import { useList } from "../../helpers/list-context";
+import { GiCrossMark } from "react-icons/gi";
+import { AiFillDelete } from "react-icons/ai";
 
+import "../history/history-list.css";
 export function PlayList() {
   const { videos } = useData();
-  const { lists } = useList();
+  const { lists, dispatchList } = useList();
   return lists.playlist.map(({ id, info }) => (
-    <div
-      key={id}
-      className="flex flex-column align-center"
-      style={{ margin: "1rem", gap: "1rem" }}
-    >
-      <h1 className="text-white">
-        PlayList Name :{" "}
-        <span className="text-blue bold size-20">{info.name}</span>
-      </h1>
-      <div className="flex text-white flex-wrap justify-space-between">
+    <div key={id} className="flex flex-column align-center selected-list">
+      <section
+        style={{ gap: "1rem" }}
+        className=" flex align-center justify-space-between"
+      >
+        <h1 className="text-white">
+          PlayList Name :{" "}
+          <span
+            className="text-blue bold size-16"
+            style={{
+              backgroundColor: "var(--white)",
+              padding: "5px",
+              borderRadius: "0.5rem",
+            }}
+          >
+            {info.name}
+          </span>
+        </h1>
+        <AiFillDelete
+          color="var(--white)"
+          onClick={() => dispatchList({ type: "REMOVE_PLAYLIST", payload: id })}
+        />
+      </section>
+      <div
+        className="flex text-white flex-wrap justify-space-between"
+        style={{ gap: "1rem" }}
+      >
         {[...videos]
           .reduce(
             (acc, curr) =>
@@ -26,23 +46,57 @@ export function PlayList() {
           )
           .map(
             ({
-              id,
+              id: vid,
               display_img: img,
               description: desc,
               title,
-              date,
-              time,
+              likes,
+              views,
             }) => (
               <div
-                key={time}
-                className="flex justify-space-around"
-                style={{ gap: "1rem" }}
+                key={vid}
+                style={{
+                  height: "max-content",
+                  backgroundColor: "var(--white-200)",
+                  padding: "var(--size-16)",
+                  position: "relative",
+                  width: "max-content",
+                }}
               >
-                <VideoCard img={img} desc={desc} title={title} id={id} />
-                <section className="flex flex-wrap" style={{ gap: "1rem" }}>
-                  <h2 className="text-white">{date}</h2>
-                  <h2 className="text-white">{time}</h2>
-                </section>
+                <GiCrossMark
+                  color="var(--white)"
+                  onClick={() =>
+                    dispatchList({
+                      type: "REMOVE_FROM_PLAYLIST",
+                      payload: { vid, id },
+                    })
+                  }
+                  style={{
+                    cursor: "pointer",
+                    position: "absolute",
+                    top: "2%",
+                    right: "5%",
+                  }}
+                />
+                <div
+                  className="flex justify-space-around "
+                  style={{ gap: "1rem" }}
+                >
+                  <VideoCard
+                    img={img}
+                    likes={likes}
+                    views={views}
+                    desc={desc}
+                    title={title}
+                    id={vid}
+                    cardStyle="playlist-card"
+                    cardHeader="playListedVideo"
+                  />
+                  <section
+                    className="flex flex-wrap"
+                    style={{ gap: "1rem" }}
+                  ></section>
+                </div>
               </div>
             )
           )}

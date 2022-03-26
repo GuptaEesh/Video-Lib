@@ -6,6 +6,7 @@ import {
   LikeList,
   ListingPage,
   Login,
+  WatchLater,
   PlayList,
   SignUp,
   VideoScreen,
@@ -32,6 +33,7 @@ function App() {
             <Route path="/videos" element={<ListingPage />} />
             <Route path="/videos/:id" element={<VideoScreen />} />
             <Route path="/likeList" element={<LikeList />} />
+            <Route path="/watchlater" element={<WatchLater />} />
             <Route path="/history" element={<HistoryList />} />
             <Route path="/playlist" element={<PlayList />} />
           </Routes>

@@ -30,7 +30,7 @@ export function Modal({ setVisible, video }) {
                   btnFunc={() =>
                     dispatchList({
                       type: "ADD_TO_PLAYLIST",
-                      payload: { video, id },
+                      payload: { video: video, id: id },
                     })
                   }
                   btnStyle={{ padding: "5px 10px" }}
