@@ -78,6 +78,23 @@ const listReducer = (lists, action) => {
             : playlist
         ),
       };
+    case "REMOVE_FROM_PLAYLIST":
+      return {
+        ...lists,
+        playlist: lists.playlist.map((playlist) =>
+          playlist.id === action.payload.id
+            ? {
+                ...playlist,
+                info: {
+                  ...playlist.info,
+                  content: playlist.info.content.filter(
+                    (id) => id !== action.payload.vid
+                  ),
+                },
+              }
+            : playlist
+        ),
+      };
     case "ADD_TO_WATCHLATER":
       return {
         ...lists,
@@ -101,7 +118,7 @@ const listReducer = (lists, action) => {
 };
 const ListProvider = ({ children }) => {
   const [lists, dispatchList] = useReducer(listReducer, initial);
-  console.log(lists.watchLater);
+  console.log(lists.playlist);
   return (
     <ListContext.Provider value={{ lists, dispatchList }}>
       {children}

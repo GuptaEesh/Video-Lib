@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useList } from "../../../helpers/list-context";
 import { useData } from "../../../helpers/data-context";
-import { AiFillLike } from "react-icons/ai";
+import { v4 as uuid } from "uuid";
+import { AiFillLike, AiFillDelete } from "react-icons/ai";
 import { MdPlaylistAdd } from "react-icons/md";
 import { BsFillBookmarkFill, BsFillBookmarkCheckFill } from "react-icons/bs";
-
+import { GiCrossMark } from "react-icons/gi";
+import { Input, Button } from "../../";
 import "./video-display.css";
+import { useState } from "react";
 export function VideoCard({
   img,
   title,
@@ -17,6 +20,9 @@ export function VideoCard({
 }) {
   const { videos } = useData();
   const navigate = useNavigate();
+  const [text, setText] = useState();
+  const [visible, setVisible] = useState(false);
+
   const { dispatchList, lists } = useList();
   return (
     <div
@@ -72,7 +78,69 @@ export function VideoCard({
             color="var(--white)"
           />
         )}
-        <MdPlaylistAdd color="var(--white)" />
+        <div style={{ position: "relative" }}>
+          <MdPlaylistAdd
+            color="var(--white)"
+            onClick={() => setVisible(!visible)}
+          />
+          {visible && (
+            <div className="playlist flex flex-column text-white">
+              <section className="flex justify-space-between">
+                Playlist <GiCrossMark onClick={() => setVisible(!visible)} />
+              </section>
+              {lists.playlist.map(({ id: listId, info }) => {
+                return (
+                  <div
+                    key={listId}
+                    className="flex align-center"
+                    style={{ gap: "1rem" }}
+                  >
+                    <Button
+                      btnType="primary-video text-white bold btn without-shadow"
+                      btnText="Add to"
+                      btnFunc={() => {
+                        dispatchList({
+                          type: "ADD_TO_PLAYLIST",
+                          payload: { video: id, id: listId },
+                        });
+                        setVisible(!visible);
+                      }}
+                      btnStyle={{ padding: "5px" }}
+                    />
+                    <h2 className="text-white">{info.name}</h2>
+                    <AiFillDelete
+                      color="var(--secondary-300)"
+                      onClick={() =>
+                        dispatchList({
+                          type: "REMOVE_PLAYLIST",
+                          payload: listId,
+                        })
+                      }
+                    />
+                  </div>
+                );
+              })}
+              <Input
+                inputPlaceHolder="new.."
+                inputClass="add-playlist text-white"
+                inputValue={text}
+                inputFunc={(e) => setText(e.target.value)}
+              />
+              <Button
+                btnText="Generate"
+                btnType="primary-video text-white btn"
+                btnFunc={() => {
+                  dispatchList({
+                    type: "GENERATE_PLAYLIST",
+                    payload: { id: uuid(), info: { name: text, content: [] } },
+                  });
+                  setText("");
+                }}
+                btnStyle={{ padding: "5px" }}
+              />
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );
